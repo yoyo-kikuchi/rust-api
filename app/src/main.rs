@@ -14,9 +14,11 @@ async fn greet(query: web::Query<ArticleQuery>) -> impl Responder {
 #[actix_web::main]
 async fn main() -> std::io::Result<()> {
     HttpServer::new(|| {
-        App::new()
-            .route("/sample", web::get().to(|| async { "Hello World!" }))
-            .service(greet)
+        App::new().service(
+            web::scope("/v1")
+                .service(greet)
+                .route("/sample", web::get().to(|| async { "Hello World!" })),
+        )
     })
     .bind(("0.0.0.0", 3000))?
     .run()
