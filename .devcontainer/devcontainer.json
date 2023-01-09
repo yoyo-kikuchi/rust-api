@@ -7,7 +7,7 @@
   "settings": {
     "terminal.integrated.defaultProfile.linux": "bash"
   },
-  "postCreateCommand": "rustc --version && cargo -V",
+  "postCreateCommand": "rustc --version && cargo -V && cd app && cargo install cargo-watch",
   "remoteUser": "vscode",
   "customizations": {
     "vscode": {
