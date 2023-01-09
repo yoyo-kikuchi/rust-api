@@ -1,14 +1,8 @@
 {
   "name": "rust-api",
-  "dockerComposeFile": [
-    "docker-compose.yml"
-  ],
+  "dockerComposeFile": ["docker-compose.yml"],
   "service": "app",
-  "runServices": [
-    "app",
-    "mysql",
-    "mongo"
-  ],
+  "runServices": ["app", "mysql", "mongo"],
   "workspaceFolder": "/workspace/rust-api",
   "settings": {
     "terminal.integrated.defaultProfile.linux": "bash"
@@ -31,8 +25,6 @@
       ]
     }
   },
-  "forwardPorts": [
-    3000
-  ],
+  "forwardPorts": [3000],
   "shutdownAction": "stopCompose"
 }

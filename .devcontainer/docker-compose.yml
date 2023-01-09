@@ -9,7 +9,6 @@ services:
         UID: ${UID:-1000}
         GID: ${GID:-1000}
     image: rua-api/app
-    platform: linux/amd64
     container_name: rus-api-app
     tty: true
     volumes:
