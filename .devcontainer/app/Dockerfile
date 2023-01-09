@@ -12,4 +12,7 @@ RUN apt-get update \
     --shell /bin/bash --create-home vscode \
     && rustup component add clippy rls rust-analysis rust-src rust-docs rustfmt rust-analyzer
 
-ENV TZ=Asia/Tokyo
+ENV TZ=Asia/Tokyo \
+    CARGO_TARGET_DIR=/tmp/target \
+    LANG=ja_JP.utf8 \
+    LC_CTYPE=ja_JP.utf8
