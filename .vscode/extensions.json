@@ -1,0 +1,14 @@
+{
+  "recommendations": [
+    "vadimcn.vscode-lldb",
+    "mutantdino.resourcemonitor",
+    "rust-lang.rust-analyzer",
+    "tamasfe.even-better-toml",
+    "serayuzgur.crates",
+    "mechatroner.rainbow-csv",
+    "esbenp.prettier-vscode",
+    "wmaurer.change-case",
+    "streetsidesoftware.code-spell-checker",
+    "Gruntfuggly.todo-tree"
+  ]
+}

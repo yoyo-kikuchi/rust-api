@@ -1,0 +1,38 @@
+{
+  "name": "rust-api",
+  "dockerComposeFile": [
+    "docker-compose.yml"
+  ],
+  "service": "app",
+  "runServices": [
+    "app",
+    "mysql",
+    "mongo"
+  ],
+  "workspaceFolder": "/workspace/rust-api",
+  "settings": {
+    "terminal.integrated.defaultProfile.linux": "bash"
+  },
+  "postCreateCommand": "rustc --version && cargo -V",
+  "remoteUser": "vscode",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "vadimcn.vscode-lldb",
+        "mutantdino.resourcemonitor",
+        "rust-lang.rust-analyzer",
+        "tamasfe.even-better-toml",
+        "serayuzgur.crates",
+        "mechatroner.rainbow-csv",
+        "esbenp.prettier-vscode",
+        "wmaurer.change-case",
+        "streetsidesoftware.code-spell-checker",
+        "Gruntfuggly.todo-tree"
+      ]
+    }
+  },
+  "forwardPorts": [
+    3000
+  ],
+  "shutdownAction": "stopCompose"
+}

@@ -1,0 +1,9 @@
+{
+  "files.insertFinalNewline": true,
+  "editor.formatOnSave": true,
+  "lldb.executable": "/usr/bin/lldb",
+  "files.watcherExclude": {
+    "**/target/**": true
+  },
+  "rust-analyzer.checkOnSave.command": "clippy"
+}

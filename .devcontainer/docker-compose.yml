@@ -1,0 +1,65 @@
+version: "3.4"
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: app/Dockerfile
+      args:
+        UID: ${UID:-1000}
+        GID: ${GID:-1000}
+    image: rua-api/app
+    platform: linux/amd64
+    container_name: rus-api-app
+    tty: true
+    volumes:
+      - type: bind
+        source: $PWD/
+        target: /workspace/rust-api/
+        consistency: delegated
+    ports:
+      - 3000:3000
+    env_file:
+      - .env
+    depends_on:
+      - mysql
+      - mongo
+
+  mysql:
+    build:
+      context: mysql/
+      dockerfile: Dockerfile
+    image: rust-api/mysql
+    platform: linux/amd64
+    container_name: rust-api-mysql
+    volumes:
+      - type: volume
+        source: rust-api-mysql-data
+        target: /var/lib/mysql
+      - type: bind
+        source: ./mysql/initdb.d
+        target: /docker-entrypoint-initdb.d
+    ports:
+      - 3306:3306
+
+  mongo:
+    build:
+      context: mongo/
+      dockerfile: Dockerfile
+    image: rust-api/mongo
+    restart: always
+    container_name: rust-api-mongo
+    volumes:
+      - type: volume
+        source: rust-api-mongo-data
+        target: /data/db
+      - type: volume
+        source: rust-api-mongo-configdb
+        target: /data/configdb
+    ports:
+      - 27017:27017
+
+volumes:
+  rust-api-mysql-data:
+  rust-api-mongo-data:
+  rust-api-mongo-configdb:
