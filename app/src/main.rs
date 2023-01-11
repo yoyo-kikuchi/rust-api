@@ -1,6 +1,8 @@
 use actix_web::{get, web, App, HttpResponse, HttpServer, Responder};
 use serde::Deserialize;
 
+mod database;
+
 #[derive(Deserialize)]
 struct ArticleQuery {
     name: String,
@@ -8,6 +10,7 @@ struct ArticleQuery {
 
 #[get("/greet")]
 async fn greet(query: web::Query<ArticleQuery>) -> impl Responder {
+    database::mysql::query().await;
     HttpResponse::Ok().body(format!("name is {}", query.name))
 }
 
