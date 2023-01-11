@@ -4,7 +4,7 @@ ARG UID=1000
 ARG GID=1000
 
 RUN apt-get update \
-    && apt-get install -y git curl wget \
+    && apt-get install -y git curl wget libssl-dev pkg-config\
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/* \
     && groupadd --gid $GID vscode \
